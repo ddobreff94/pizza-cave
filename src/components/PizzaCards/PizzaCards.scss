@@ -1,0 +1,34 @@
+.cards-pizza {
+    .cards__items {
+        display: flex;
+        margin: -20px;
+    }
+
+    .cards__item {
+        padding: 20px;
+        width: 33.33%;
+    }
+}
+
+.card-pizza {
+    background-color: #fff;
+    padding: 3px;
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.3);
+
+    h4 {
+        text-align: center;
+    }
+
+    figure {
+        max-height: 219px;
+        overflow: hidden;
+    }
+
+    .card__content {
+        padding: 20px;
+    }
+
+    .card__list {
+        margin-bottom: 30px;
+    }
+}

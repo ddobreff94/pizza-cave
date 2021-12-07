@@ -1,0 +1,29 @@
+@import '../../styles/load.scss';
+
+.header {
+    padding: 20px 0;
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+
+    .header__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header__nav ul {
+        display: flex;
+        margin: 0 -20px;
+    }
+
+    .header__nav ul li {
+        padding: 0 20px;
+    }
+
+    .header__logo {
+        max-width: 50px;
+    }
+
+    .header__logo img {
+        width: 100%;
+    }
+}

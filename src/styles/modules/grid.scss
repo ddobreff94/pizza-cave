@@ -1,0 +1,21 @@
+@import './mixins.scss';
+
+.grid {
+    .grid__row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px;
+    }
+
+    .grid__col {
+        padding: 10px;
+    }
+
+    .grid__col--1of4 {
+        width: 25%;
+
+        @include breakpoint-up(mobile) {
+            width: 100%;
+        }
+    }
+}
