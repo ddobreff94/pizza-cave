@@ -1,10 +1,13 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import './Header.scss'
-import logo from '../../images/svgs/logo.svg';
 
-const Header = ({
-    email
-}) => {
+import { AuthContext } from '../../contexts/AuthContext';
+import logo from '../../images/svgs/logo.svg';
+import './Header.scss'
+
+const Header = () => {
+    const { user } = useContext(AuthContext);
+
     const guestNavigation = (
         <nav className="nav header__nav">
             <ul>    
@@ -22,7 +25,7 @@ const Header = ({
 
                 <li><Link to="/menu">Menu</Link></li>
 
-                <li><a href="#">Create a pizza</a></li>
+                <li><Link to="/create">Create a pizza</Link></li>
 
                 <li><a href="#">Log out</a></li>
             </ul>
@@ -37,7 +40,7 @@ const Header = ({
                         <img src= { logo } alt="Logo" />
                     </Link>
                     
-                    {email
+                    {user.email
                         ? userNavigation
                         : guestNavigation
                     }

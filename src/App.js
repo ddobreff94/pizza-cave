@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthContext } from './contexts/AuthContext'
 
@@ -5,7 +6,7 @@ import Header from './components/Header/Header'
 import Login from './components/Login'
 import Welcome from './components/Welcome/Welcome'
 import PizzaCards from './components/PizzaCards/PizzaCards';
-import { useState } from 'react';
+import CreatePizza from './components/CreatePizza/CreatePizza';
 
 function App() {
     const [user, setUser] = useState({
@@ -14,20 +15,21 @@ function App() {
         accessToken: ''
     });
 
-    const onLogin = (authData) => {
+    const login = (authData) => {
         setUser(authData);
     };
 
     return (
-        <AuthContext.Provider value={true}>
+        <AuthContext.Provider value={ { user, login } }>
             <div className="App">
                 <div className="wrapper">
-                    <Header email={user.email} />
+                    <Header />
 
                     <Routes>
                         <Route path="/" element={<Welcome />}/>
                         <Route path="/menu" element={<PizzaCards />}/>
-                        <Route path="/login" element={<Login onLogin={onLogin} />}/>
+                        <Route path="/login" element={<Login />}/>
+                        <Route path="/create" element={<CreatePizza />}/>
                     </Routes>
                 </div>
             </div>
