@@ -2,7 +2,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Header.scss'
 import logo from '../../images/svgs/logo.svg';
 
-const Header = () => {
+const Header = ({
+    email
+}) => {
     const guestNavigation = (
         <nav className="nav header__nav">
             <ul>    
@@ -35,7 +37,10 @@ const Header = () => {
                         <img src= { logo } alt="Logo" />
                     </Link>
                     
-                    { userNavigation }
+                    {email
+                        ? userNavigation
+                        : guestNavigation
+                    }
                 </div>
             </div>
         </header>
