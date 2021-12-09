@@ -1,12 +1,37 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router';
+import * as pizzaService from '../../services/pizzaService';
+import { AuthContext } from '../../contexts/AuthContext';
+
 const CreatePizza = () => {
-    const onPizzaSubmit = (event) => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const onPizzaCreate = (event) => {
         event.preventDefault();
+
         const formData = new FormData(event.currentTarget);
-        console.log(formData);
+
+        const name = formData.get('name');
+        const description = formData.get('description');
+        const imageUrl = formData.get('image');
+        const ingredients = formData.get('ingredients').split(',');
+
+        // console.log(name, description, image, ingredients);
+
+        pizzaService.create({
+            name,
+            imageUrl,
+            description,
+            ingredients
+        }, user.accessToken)
+            .then(result => {
+                navigate('/menu');
+            })
     }
 
-    return(
-        <form action="POST" onSubmit={onPizzaSubmit}>
+    return (
+        <form action="POST" onSubmit={onPizzaCreate}>
             <div className="form__body">
                 <div className="form__row">
                     <label htmlFor="pizzaName" className="form__label">
@@ -14,7 +39,7 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <input type="text" name="pizzaName" id="pizzaName" className="field" />
+                        <input type="text" name="name" id="pizzaName" className="field" />
                     </div>
                 </div>|
 
@@ -24,7 +49,7 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <input type="url" name="pizzaImage" id="pizzaImage" className="field" placeholder="Enter image URL" />
+                        <input type="url" name="image" id="pizzaImage" className="field" placeholder="Enter image URL" />
                     </div>
                 </div>|
 
@@ -34,7 +59,7 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <textarea name="pizzaDescription" id="pizzaDescription" className="field field--textarea"></textarea>
+                        <textarea name="description" id="pizzaDescription" className="field field--textarea"></textarea>
                     </div>
                 </div>|
 
@@ -44,9 +69,13 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <textarea name="pizzaIngredients" id="pizzaIngredients" className="field field--textarea"></textarea>
+                        <textarea name="ingredients" id="pizzaIngredients" className="field field--textarea"></textarea>
                     </div>
                 </div>|
+            </div>
+
+            <div className="form__actions">
+                <button>Create pizza!</button>
             </div>
         </form>
     )
