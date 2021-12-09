@@ -1,16 +1,18 @@
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import * as pizzaService from '../../services/pizzaService.js'
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Details = () => {
     const [pizza, setPizza] = useState({});
+    const { user } = useContext(AuthContext);
     const { pizzaId } = useParams();
 
     useEffect(() => {
         pizzaService.getOnePizza(pizzaId)
             .then(pizzaResult => {
                 setPizza(pizzaResult);
-            })
+            })            
     }, [pizzaId])
 
     return(
@@ -32,7 +34,7 @@ const Details = () => {
 
                         <div className="section__list">
                             <ul>
-                                {/* {pizza.ingredients.map(x => <li key={x}>{x}</li>)} */}
+                                {pizza.ingredients?.map(x => <li key={x}>{x}</li>)}
                             </ul>
                         </div>
                     </div>
@@ -41,6 +43,5 @@ const Details = () => {
         </section>
     );
 };
-
 
 export default Details;

@@ -40,7 +40,7 @@ const Header = () => {
                         <img src= { logo } alt="Logo" />
                     </Link>
                     
-                    {user.email
+                    {user.email.length > 0
                         ? userNavigation
                         : guestNavigation
                     }
