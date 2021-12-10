@@ -15,7 +15,13 @@ const Details = () => {
             })            
     }, [pizzaId])
 
-    return(
+    const editButton = (
+        <button className="section__edit">
+            Edit
+        </button>
+    );
+
+    return (
         <section className="section-details">
             <div className="shell">
                 <div className="section__inner">
@@ -37,6 +43,17 @@ const Details = () => {
                                 {pizza.ingredients?.map(x => <li key={x}>{x}</li>)}
                             </ul>
                         </div>
+
+                        <span className="section__likes">
+                            Likes: { pizza.likes }
+                        </span>
+                    </div>
+
+                    <div className="section__actions">
+                        { user._id && (user._id == pizza._ownerId)
+                            ? editButton
+                            : ''
+                        }
                     </div>
                 </div>
             </div>

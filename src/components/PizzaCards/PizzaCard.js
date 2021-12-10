@@ -1,8 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+import * as pizzaService from '../../services/pizzaService';
+import { AuthContext } from "../../contexts/AuthContext";
+import PizzaCards from "./PizzaCards";
 
 const PizzaCard = ({
     pizza
 }) => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const deleteHandler = (event) => {
+        event.preventDefault();
+
+        pizzaService.destroy(pizza._id, user.accessToken)
+            .then(() => {
+                navigate('/');
+                navigate('/menu');
+            });    
+    }
+
+    const deleteButton = (
+        <a href="#" className="card__delete" onClick={deleteHandler}>
+            Delete
+        </a>
+    );
+
     return (
         <div className="cards__item">
             <div className="card-pizza">
@@ -15,26 +39,15 @@ const PizzaCard = ({
                         {pizza.name}
                     </h4>
 
-                    {/* <div className="card__list">
-                        <h5>
-                            Ingredients
-                        </h5>
-
-                        <ul>    
-                            {pizza.ingredients.map(x => <li key={x}>{x}</li>)}
-                        </ul>
-                    </div> */}
-
-                    {/* <div className="card__entry">
-                        <p>
-                            {pizza.description}
-                        </p>
-                    </div> */}
-
                     <div className="card__actions">
                         <Link className="card__button" to={`/details/${pizza._id}`}>
                             See more
                         </Link>
+
+                        { user._id && (user._id == pizza._ownerId)
+                            ? deleteButton 
+                            : ''
+                        }
                     </div>
                 </div>
             </div>

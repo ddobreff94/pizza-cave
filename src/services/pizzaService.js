@@ -24,3 +24,12 @@ export const getOnePizza = (pizzaId) => {
     return fetch(`${baseUrl}data/pizzas/${pizzaId}`)
         .then(res => res.json())
 };
+
+export const destroy = (pizzaId, token) => {
+    return fetch(`${baseUrl}data/pizzas/${pizzaId}`, {
+        method: 'DELETE',
+        headers: {
+            'X-Authorization': token
+        }
+    }).then(res => res.json());
+}

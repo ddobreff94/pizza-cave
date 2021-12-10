@@ -28,29 +28,36 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={onLoginHandler} method="POST">
-            <div className="form__body">
-                <div className="form__row">
-                    <label htmlFor="loginUsername" className="form__label"></label>
+        <section className='section-login'>
+            <div className="shell">
+                <div className="section__inner">
+                    <form onSubmit={onLoginHandler} method="POST">
+                        <div className="form__body">
+                            <div className="form__row">
+                                <label htmlFor="loginUsername" className="form__label"></label>
 
-                    <div className="form__controls">
-                        <input type="text" id="loginUsername" name="email" className="field" placeholder="Username" required />
-                    </div>
-                </div>
+                                <div className="form__controls">
+                                    <input type="text" id="loginUsername" name="email" className="field" placeholder="Username" required />
+                                </div>
+                            </div>
 
-                <div className="form__row">
-                    <label htmlFor="loginPassword" className="form__label"></label>
+                            <div className="form__row">
+                                <label htmlFor="loginPassword" className="form__label"></label>
 
-                    <div className="form__controls">
-                        <input type="password" name="password" id="loginPassword" className="field" placeholder="Password" required />
-                    </div>
+                                <div className="form__controls">
+                                    <input type="password" name="password" id="loginPassword" className="field" placeholder="Password" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="form__actions">
+                            <input type="submit" value="Log in" />
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div className="form__actions">
-                <input type="submit" value="Log in" />
-            </div>
-        </form>
+        </section>
+        
     );
 }
 

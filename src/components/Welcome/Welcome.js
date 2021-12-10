@@ -5,12 +5,18 @@ const Welcome = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <h1>Welcome,  
-            {user.email.length > 0
-                ? user.email
-                : 'Guest'
-            }
-        </h1>
+        <section className="section-welcome">
+            <div className="shell">
+                <div className="section__inner">
+                    <h1>Welcome,  
+                        {user.email.length > 0
+                            ? user.email
+                            : 'Guest'
+                        }
+                    </h1>
+                </div>
+            </div>
+        </section>
     );
 }
 

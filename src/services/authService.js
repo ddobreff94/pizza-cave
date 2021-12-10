@@ -31,5 +31,5 @@ export const register = (email, password) => {
 }
 
 export const logout = () => {
-    
+
 }
