@@ -27,7 +27,7 @@ const Header = () => {
 
                 <li><Link to="/create">Create a pizza</Link></li>
 
-                <li><a href="#">Log out</a></li>
+                <li><Link to="/logout">Log out</Link></li>
             </ul>
         </nav>
     )

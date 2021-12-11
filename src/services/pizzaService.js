@@ -12,7 +12,7 @@ export const create = async (pizzaData, token) => {
             'content-type': 'application/json',
             'X-Authorization': token
         },
-        body: JSON.stringify(pizzaData)
+        body: JSON.stringify({...pizzaData, likes: []})
     });
 
     let result = await response.json();
