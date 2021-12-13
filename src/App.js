@@ -1,7 +1,6 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import { AuthContext } from './contexts/AuthContext'
-import useLocalStorage from './hooks/useLocalStorage';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header/Header'
 import Login from './components/Login/Login'
 import Logout from './components/Logout/Logout'
@@ -11,26 +10,9 @@ import CreatePizza from './components/CreatePizza/CreatePizza';
 import Details from './components/Details/Details';
 import Register from './components/Register/Register';
 
-const initialAuthState = {
-    _id: '',
-    email: '',
-    accessToken: ''
-}
-
 function App() {
-    // Persistance, if not needed use usestate
-    const [user, setUser] = useLocalStorage('user', initialAuthState);
-
-    const login = (authData) => {
-        setUser(authData);
-    };
-
-    const logout = () => {
-        setUser(initialAuthState);
-    };
-
     return (
-        <AuthContext.Provider value={ { user, login, logout } }>
+        <AuthProvider>
             <div className="App">
                 <div className="wrapper">
                     <Header />
@@ -46,7 +28,7 @@ function App() {
                     </Routes>
                 </div>
             </div>
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 }
 

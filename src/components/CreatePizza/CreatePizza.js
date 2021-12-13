@@ -1,10 +1,9 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import * as pizzaService from '../../services/pizzaService';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const CreatePizza = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const navigate = useNavigate();
 
     const onPizzaCreate = (event) => {

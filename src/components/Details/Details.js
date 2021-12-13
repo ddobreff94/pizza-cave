@@ -1,11 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import * as pizzaService from '../../services/pizzaService.js'
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const Details = () => {
     const [pizza, setPizza] = useState({});
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const { pizzaId } = useParams();
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Details = () => {
                     </h2>
 
                     <figure>
-                        <img src={pizza.imageUrl} alt="Pizza image" />
+                        <img src={pizza.imageUrl} alt="Pizza" />
                     </figure>
 
                     <div className="section__content">
@@ -50,7 +50,7 @@ const Details = () => {
                     </div>
 
                     <div className="section__actions">
-                        { user._id && (user._id == pizza._ownerId)
+                        { user._id && (user._id === pizza._ownerId)
                             ? editButton
                             : ''
                         }

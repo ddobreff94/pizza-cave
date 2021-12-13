@@ -1,11 +1,10 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../../services/authService';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const Register = () => {
-    const { login } = useContext(AuthContext);
+    const { login } = useAuthContext();
     const navigate = useNavigate();
 
     const registerSubmitHandler = (event) => {
@@ -21,7 +20,7 @@ const Register = () => {
         authService.register(email, password)
             .then(authData => {
                 login(authData);
-                navigate('/login');
+                navigate('/');
             })
     }
 

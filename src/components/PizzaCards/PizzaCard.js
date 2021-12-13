@@ -1,9 +1,8 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import * as pizzaService from '../../services/pizzaService';
 import { AuthContext } from "../../contexts/AuthContext";
-import PizzaCards from "./PizzaCards";
 
 const PizzaCard = ({
     pizza
@@ -31,7 +30,7 @@ const PizzaCard = ({
         <div className="cards__item">
             <div className="card-pizza">
                 <figure>
-                    <img src={pizza.imageUrl} alt="Pizza image" />
+                    <img src={pizza.imageUrl} alt="Pizza" />
                 </figure>
 
                 <div className="card__content">
@@ -44,7 +43,7 @@ const PizzaCard = ({
                             See more
                         </Link>
 
-                        { user._id && (user._id == pizza._ownerId)
+                        { user._id && (user._id === pizza._ownerId)
                             ? deleteButton 
                             : ''
                         }

@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
-
-import { AuthContext } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../contexts/AuthContext';
 import logo from '../../images/svgs/logo.svg';
 import './Header.scss'
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
 
     const guestNavigation = (
         <nav className="nav header__nav">
