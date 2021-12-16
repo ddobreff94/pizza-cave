@@ -1,25 +1,51 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useAuthContext } from "../../contexts/AuthContext";
 import usePizzaState from "../../hooks/usePizzaState.js";
+
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import * as likeService from '../../services/likeService';
 
 const Details = () => {
     const { user } = useAuthContext();
     const { pizzaId } = useParams();
+    const { addNotification } = useNotificationContext();
     const [pizza, setPizza] = usePizzaState(pizzaId);
-    
+
+    useEffect(() => {
+        likeService.getPizzaLikes(pizzaId)
+            .then(likes => {
+                setPizza(state => ({...state, likes}))
+            })
+    }, []);
+
+    const likeButtonClickHandler = () => {
+        if (user._id === pizza._ownerId) {
+            return;
+        }
+
+        if (pizza.likes.includes(user._id)) {
+            addNotification('You cannot like again', types.error)
+            return;
+        }
+
+        likeService.like(user._id, pizzaId)
+            .then(() => {
+                setPizza(state => ({...state, likes: [...state.likes, user._id]}));
+
+                addNotification('Successfuly liked a cat :)', types.success);
+            });
+    };
+
     const editButton = (
         <Link to={`/edit/${pizza._id}`} className="section__edit">
             Edit
         </Link> 
     );
 
-    // const likeButtonClick = () => {
-    //     pizzaService.like();
-    // };
-
     const likeButton = (
-        <button className="section__like">
+        <button className="section__like" onClick={likeButtonClickHandler}>
             Like
         </button>
     );
@@ -47,9 +73,13 @@ const Details = () => {
                             </ul>
                         </div>
 
-                        <span className="section__likes">
-                            Likes: { pizza.likes }
-                        </span>
+                        <div className="section__likes">
+                            {likeButton}
+
+                            <p>
+                                Likes: {pizza.likes?.length || 0}
+                            </p>
+                        </div>
                     </div>
 
                     <div className="section__actions">
