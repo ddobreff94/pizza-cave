@@ -11,6 +11,7 @@ import PizzaCards from './components/PizzaCards/PizzaCards';
 import CreatePizza from './components/CreatePizza/CreatePizza';
 import Details from './components/Details/Details';
 import Register from './components/Register/Register';
+import MyPizzas from './components/MyPizzas/MyPizzas';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Welcome />}/>
                         <Route path="/menu" element={<PizzaCards />}/>
+                        <Route path="/my-pizzas" element={<MyPizzas />}/>
                         <Route path="/login" element={<Login />}/>
                         <Route path="/logout" element={<Logout />}/>
                         <Route path="/register" element={<Register />}/>

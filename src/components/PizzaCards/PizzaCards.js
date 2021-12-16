@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import './PizzaCards.scss'
 
 import * as pizzaService from '../../services/pizzaService.js'
-import PizzaCard from './PizzaCard'
+
+import PizzaList from '../PizzaList/PizzaList';
 
 const PizzaCards = () => {
     const [pizzas, setPizzas] = useState([]);
@@ -19,8 +20,14 @@ const PizzaCards = () => {
         <section>
             <div className="shell">
                 <div className="cards-pizza">
+                    <h2>
+                        All Pizzas!
+                    </h2>
+
                     <div className="cards__items">
-                        { pizzas.map(x => <PizzaCard key={x._id} pizza={x} />) }
+                        {/* { pizzas.map(x => <PizzaCard key={x._id} pizza={x} />) } */}
+
+                        <PizzaList pizzas={pizzas} />
                     </div>
                 </div>
             </div>

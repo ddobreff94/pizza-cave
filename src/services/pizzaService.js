@@ -9,6 +9,12 @@ export const getAllPizzas = () => request.get(`${baseUrl}data/pizzas`);
 //         .then(res => res.json())
 // };
 
+export const getMyPizzas = (ownerId) => {
+    let pizzaQuery = encodeURIComponent(`_ownerId="${ownerId}"`);
+
+    return request.get(`${baseUrl}data/pizzas?where=${pizzaQuery}`);
+};
+
 export const create = async (pizzaData, token) => {
     let response = await fetch(`${baseUrl}data/pizzas`, {
         method: 'POST',

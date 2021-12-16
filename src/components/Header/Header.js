@@ -25,6 +25,8 @@ const Header = () => {
 
                 <li><Link to="/menu">Menu</Link></li>
 
+                <li><Link to="/my-pizzas">My pizzas</Link></li>
+
                 <li><Link to="/create">Create a pizza</Link></li>
 
                 <li><Link to="/logout">Log out</Link></li>
