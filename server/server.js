@@ -1349,6 +1349,7 @@
                 "imageUrl": "https://pinocchio.paradisealacarte.com/wp-content/uploads/sites/8/2019/04/caprichiosa-pizza-min-1.jpeg",
                 "description": "Pizza capricciosa is a style of pizza in Italian cuisine prepared with mozzarella cheese, Italian baked ham, mushroom, artichoke and tomato.",
                 "_createdOn": 1617194128613,
+                "likes": []
             },
             "ca544454-6924-4c83-8945-035debf76f04": {
                 "_ownerId": "95bfc67f-e26c-4ea1-9f4c-bbdaf822ded9",
@@ -1364,6 +1365,7 @@
                 "imageUrl": "https://laurenslatest.com/wp-content/uploads/2021/01/margherita-pizza-recipe-04.jpg",
                 "description": "Pizza Margherita (more commonly known in English as Margherita pizza) is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella cheese, fresh basil, salt, and extra-virgin olive oil.",
                 "_createdOn": 1617194128621,
+                "likes": []
             },
         },
         games: {

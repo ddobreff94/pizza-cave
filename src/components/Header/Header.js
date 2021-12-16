@@ -9,6 +9,8 @@ const Header = () => {
     const guestNavigation = (
         <nav className="nav header__nav">
             <ul>    
+                <li><Link to="/menu">Menu</Link></li>
+                
                 <li><Link to="/login">Log in</Link></li>
 
                 <li><Link to="/register">Register</Link></li>

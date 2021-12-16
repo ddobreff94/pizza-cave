@@ -10,7 +10,6 @@ const PizzaCard = ({
 }) => {
     const { user } = useAuthContext();
     const navigate = useNavigate();
-
     const [showDeletePopup, setShowDeletePopup] = useState(false);
 
     const deleteHandler = (event) => {
@@ -39,10 +38,20 @@ const PizzaCard = ({
         </a>
     );
 
+    const seeMoreButton = (
+        <Link className="card__button" to={`/details/${pizza._id}`}>
+            See more
+        </Link>
+    );
+
+    const deletePopup = (
+        <ConfirmPopup deleteClickHandler={deleteClickHandler} deleteHandler={deleteHandler}/>
+    );
+
     return (
         <>
             {showDeletePopup
-                ? <ConfirmPopup deleteClickHandler={deleteClickHandler} deleteHandler={deleteHandler}/>
+                ? deletePopup
                 : ''
             }
 
@@ -58,10 +67,11 @@ const PizzaCard = ({
                         </h4>
 
                         <div className="card__actions">
-                            <Link className="card__button" to={`/details/${pizza._id}`}>
-                                See more
-                            </Link>
-
+                            { (!user.email) 
+                                ? 'Log in or register to see more.'
+                                : seeMoreButton
+                            }
+                            
                             { user._id && (user._id === pizza._ownerId)
                                 ? deleteButton 
                                 : ''

@@ -1,18 +1,22 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
+import './Welcome.scss';
+
 const Welcome = () => {
     const { user } = useContext(AuthContext);
+    const userName = user.email.split('@');
 
     return (
         <section className="section-welcome">
             <div className="shell">
                 <div className="section__inner">
-                    <h1>Welcome,  
+                    <h1>Welcome,   
                         {user.email.length > 0
-                            ? user.email
+                            ? ' ' + userName[0]
                             : 'Guest'
                         }
+                        !
                     </h1>
                 </div>
             </div>

@@ -1,9 +1,13 @@
+import * as request from './requester';
+
 const baseUrl = "http://localhost:3030/";
 
-export function getAllPizzas() {
-    return fetch(`${baseUrl}data/pizzas`)
-        .then(res => res.json())
-};
+export const getAllPizzas = () => request.get(`${baseUrl}data/pizzas`);
+
+// export function getAllPizzas() {
+//     return fetch(`${baseUrl}data/pizzas`)
+//         .then(res => res.json())
+// };
 
 export const create = async (pizzaData, token) => {
     let response = await fetch(`${baseUrl}data/pizzas`, {
@@ -20,6 +24,8 @@ export const create = async (pizzaData, token) => {
     return result
 }
 
+export const update = (pizzaId, pizzaData) => request.put(`${baseUrl}data/pizzas/${pizzaId}`, pizzaData);
+
 export const getOnePizza = (pizzaId) => {
     return fetch(`${baseUrl}data/pizzas/${pizzaId}`)
         .then(res => res.json())
@@ -33,3 +39,7 @@ export const destroy = (pizzaId, token) => {
         }
     }).then(res => res.json());
 }
+
+// export const like = (pizzaId, userId) => {
+
+// };

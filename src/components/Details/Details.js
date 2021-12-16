@@ -1,23 +1,26 @@
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import * as pizzaService from '../../services/pizzaService.js'
 import { useAuthContext } from "../../contexts/AuthContext";
+import usePizzaState from "../../hooks/usePizzaState.js";
 
 const Details = () => {
-    const [pizza, setPizza] = useState({});
     const { user } = useAuthContext();
     const { pizzaId } = useParams();
-
-    useEffect(() => {
-        pizzaService.getOnePizza(pizzaId)
-            .then(pizzaResult => {
-                setPizza(pizzaResult);
-            })            
-    }, [pizzaId])
-
+    const [pizza, setPizza] = usePizzaState(pizzaId);
+    
     const editButton = (
-        <button className="section__edit">
+        <Link to={`/edit/${pizza._id}`} className="section__edit">
             Edit
+        </Link> 
+    );
+
+    // const likeButtonClick = () => {
+    //     pizzaService.like();
+    // };
+
+    const likeButton = (
+        <button className="section__like">
+            Like
         </button>
     );
 

@@ -1,36 +1,35 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as pizzaService from '../../services/pizzaService';
-import { useAuthContext } from '../../contexts/AuthContext';
+import usePizzaState from '../../hooks/usePizzaState';
 
-const CreatePizza = () => {
-    const { user } = useAuthContext();
+const Edit = () => {
     const navigate = useNavigate();
+    const { pizzaId } = useParams();
+    const [pizza, setPizza] = usePizzaState(pizzaId);
 
-    const onPizzaCreate = (event) => {
+    const pizzaEditHandler  = (event) => {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
-
         const name = formData.get('name');
         const description = formData.get('description');
         const imageUrl = formData.get('image');
         const ingredients = formData.get('ingredients').split(',');
 
-        // console.log(name, description, image, ingredients);
+        let pizzaDataUpdated = {
+            description: description,
+            imageUrl: imageUrl,
+            ingredients: ingredients,
+            name: name,
+        }
 
-        pizzaService.create({
-            name,
-            imageUrl,
-            description,
-            ingredients
-        }, user.accessToken)
-            .then(result => {
-                navigate('/menu');
-            })
+        pizzaService.update(pizza._id, pizzaDataUpdated);
+        navigate('/');
+        navigate('/menu');
     }
 
-    return (
-        <form action="POST" onSubmit={onPizzaCreate} className='form-create'>
+    return(
+        <form action="POST" onSubmit={pizzaEditHandler} className='form-edit'>
             <div className="form__body">
                 <div className="form__row">
                     <label htmlFor="pizzaName" className="form__label">
@@ -38,7 +37,7 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <input type="text" name="name" id="pizzaName" className="field" />
+                        <input type="text" name="name" id="pizzaName" className="field" defaultValue={pizza.name} />
                     </div>
                 </div>
 
@@ -48,7 +47,7 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <input type="url" name="image" id="pizzaImage" className="field" placeholder="Enter image URL" />
+                        <input type="url" name="image" id="pizzaImage" className="field" placeholder="Enter image URL" defaultValue={pizza.imageUrl} />
                     </div>
                 </div>
 
@@ -58,7 +57,7 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <textarea name="description" id="pizzaDescription" className="field field--textarea"></textarea>
+                        <textarea name="description" id="pizzaDescription" className="field field--textarea" defaultValue={pizza.description}></textarea>
                     </div>
                 </div>
 
@@ -68,16 +67,16 @@ const CreatePizza = () => {
                     </label>
                     
                     <div className="form__controls">
-                        <textarea name="ingredients" id="pizzaIngredients" className="field field--textarea"></textarea>
+                        <textarea name="ingredients" id="pizzaIngredients" className="field field--textarea" defaultValue={pizza.ingredients}></textarea>
                     </div>
                 </div>
             </div>
 
             <div className="form__actions">
-                <button>Create pizza!</button>
+                <button>Edit pizza!</button>
             </div>
         </form>
-    )
-};
+    );
+}
 
-export default CreatePizza;
+export default Edit;
