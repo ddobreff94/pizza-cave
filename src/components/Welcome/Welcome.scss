@@ -1,8 +1,14 @@
 .section-welcome {
+    padding: 200px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    
     h1 {
         font-size: 60px;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #fff;
     }
-
-    padding: 40px 0;
-    text-align: center;
 }

@@ -1,0 +1,43 @@
+.section-login {
+    padding: 40px 0;
+
+    form {
+        background-color: #fff;
+        padding: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+
+    input.field {
+        height: 40px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 0 10px;
+        width: 100%;
+        transition: box-shadow .3s;
+    }
+
+    input:focus {
+        box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.3);
+    }
+
+    h3 {
+        font-size: 30px;
+        color: #000;
+        text-align: center;
+    }
+
+    .form__head {
+        margin-bottom: 40px;
+    }
+    
+    .form__row + .form__row {
+        margin-top: 30px;
+    }
+    
+    .form__actions {
+        max-width: 250px;
+        margin: 40px auto 0;
+    }
+}

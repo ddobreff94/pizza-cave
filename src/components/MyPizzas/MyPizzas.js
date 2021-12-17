@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import * as pizzaService from '../../services/pizzaService.js'
-
-import PizzaList from '../PizzaList/PizzaList';
 import { useAuthContext } from '../../contexts/AuthContext';
+import * as pizzaService from '../../services/pizzaService.js'
+import PizzaList from '../PizzaList/PizzaList';
+
+import './MyPizzas.scss'
+
 
 const MyPizzas = () => {
     const [pizzas, setPizzas] = useState([]);
@@ -22,7 +24,7 @@ const MyPizzas = () => {
                 <div className="section__inner">
                     <div className="cards-pizza">
                         <h2>
-                            My Pizza List!
+                            My pizza list
                         </h2>
 
                         <div className="cards__items">

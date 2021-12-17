@@ -39,7 +39,7 @@ const PizzaCard = ({
     );
 
     const seeMoreButton = (
-        <Link className="card__button" to={`/details/${pizza._id}`}>
+        <Link className="card__button btn btn--green" to={`/details/${pizza._id}`}>
             See more
         </Link>
     );

@@ -18,6 +18,10 @@ const Welcome = () => {
                         }
                         !
                     </h1>
+
+                    <p>
+                        Please continue by selecting an option from the navigation.
+                    </p>
                 </div>
             </div>
         </section>

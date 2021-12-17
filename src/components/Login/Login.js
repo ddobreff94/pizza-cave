@@ -4,6 +4,8 @@ import * as authService from '../../services/authService';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
+import './Login.scss'
+
 const Login = () => {
     const { login } = useAuthContext();
     const { addNotification } = useNotificationContext();
@@ -24,7 +26,7 @@ const Login = () => {
                 navigate('/');
             })
             .catch(err => {
-                // TODO: show notification
+                addNotification('Wrong password/email, please try again', types.error);
                 console.log(err);
             });
     }
@@ -34,6 +36,12 @@ const Login = () => {
             <div className="shell">
                 <div className="section__inner">
                     <form onSubmit={onLoginHandler} method="POST">
+                        <div className='form__head'>
+                            <h3>
+                                Please fill in the details bellow
+                            </h3>
+                        </div>
+
                         <div className="form__body">
                             <div className="form__row">
                                 <label htmlFor="loginUsername" className="form__label"></label>
@@ -53,7 +61,7 @@ const Login = () => {
                         </div>
 
                         <div className="form__actions">
-                            <input type="submit" value="Log in" />
+                            <input type="submit" className='form__btn btn' value="Log in" />
                         </div>
                     </form>
                 </div>

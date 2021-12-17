@@ -17,7 +17,7 @@ const PizzaCards = () => {
     }, []);
 
     return (
-        <section>
+        <section className='section-pizza-cards'>
             <div className="shell">
                 <div className="cards-pizza">
                     <h2>
@@ -25,8 +25,6 @@ const PizzaCards = () => {
                     </h2>
 
                     <div className="cards__items">
-                        {/* { pizzas.map(x => <PizzaCard key={x._id} pizza={x} />) } */}
-
                         <PizzaList pizzas={pizzas} />
                     </div>
                 </div>

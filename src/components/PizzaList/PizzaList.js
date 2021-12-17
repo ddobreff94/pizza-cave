@@ -14,7 +14,7 @@ const PizzaList = ({
         <>
             {pizzas.length > 0
                 ? pizzaList
-                : <p>No pizzas in the database!</p>
+                : <p className="cards__none">No pizzas in the database!</p>
             }
         </>
     );

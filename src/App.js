@@ -16,6 +16,12 @@ import MyPizzas from './components/MyPizzas/MyPizzas';
 import Notification from './components/Common/Notification/Notification';
 
 function App() {
+    const backgroundImage = (
+        <figure className="main__background">
+            <img src="images/background-image.jpg" alt="Background" />
+        </figure> 
+    );
+
     return (
         <AuthProvider>
             <NotificationProvider>
@@ -25,17 +31,21 @@ function App() {
 
                         <Notification />
 
-                        <Routes>
-                            <Route path="/" element={<Welcome />}/>
-                            <Route path="/menu" element={<PizzaCards />}/>
-                            <Route path="/my-pizzas" element={<MyPizzas />}/>
-                            <Route path="/login" element={<Login />}/>
-                            <Route path="/logout" element={<Logout />}/>
-                            <Route path="/register" element={<Register />}/>
-                            <Route path="/edit/:pizzaId" element={<Edit />}/>
-                            <Route path="/create" element={<CreatePizza />}/>
-                            <Route path="/details/:pizzaId" element={<Details />}/>
-                        </Routes>
+                        <main className='main'>
+                            {backgroundImage}
+
+                            <Routes>
+                                <Route path="/" element={<Welcome />}/>
+                                <Route path="/menu" element={<PizzaCards />}/>
+                                <Route path="/my-pizzas" element={<MyPizzas />}/>
+                                <Route path="/login" element={<Login />}/>
+                                <Route path="/logout" element={<Logout />}/>
+                                <Route path="/register" element={<Register />}/>
+                                <Route path="/edit/:pizzaId" element={<Edit />}/>
+                                <Route path="/create" element={<CreatePizza />}/>
+                                <Route path="/details/:pizzaId" element={<Details />}/>
+                            </Routes>
+                        </main>
 
                         <Footer />
                     </div>

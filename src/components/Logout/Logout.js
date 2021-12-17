@@ -3,9 +3,11 @@ import { useEffect } from "react";
 
 import * as authService from '../../services/authService';
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
  
 const Logout = () => {
     const navigate = useNavigate();
+    const { addNotification } = useNotificationContext();
     const { user, logout } = useAuthContext();
     
     useEffect(() => {
@@ -14,6 +16,7 @@ const Logout = () => {
                 console.log('test')
                 logout();
                 navigate('/');
+                addNotification('You logged out', types.warn);
             })
     }, [])
 

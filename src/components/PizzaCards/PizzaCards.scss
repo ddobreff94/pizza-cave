@@ -1,12 +1,37 @@
+.section-pizza-cards {
+    padding: 40px 0;
+
+    h2 {
+        font-size: 60px;
+        color: #fff;
+        margin-bottom: 40px;
+        font-weight: 500;
+        text-align: center;
+    }
+}
+
 .cards-pizza {
     .cards__items {
         display: flex;
+        flex-wrap: wrap;;
         margin: -20px;
+        justify-content: center;
+    }
+
+    .cards__items > p {
+        padding: 0 15px;
     }
 
     .cards__item {
         padding: 20px;
         width: 33.33%;
+    }
+    
+    .cards__none {
+        color: red;
+        text-align: center;
+        font-size: 24px;
+        padding: 0 20px;;
     }
 }
 
@@ -24,11 +49,25 @@
         overflow: hidden;
     }
 
+    figure img {
+        transition: transform .3s, zoom .3s;
+    }
+
     .card__content {
         padding: 20px;
     }
 
     .card__list {
         margin-bottom: 30px;
+    }
+
+    .card__actions {
+        text-align: center;
+    }
+}
+
+.card-pizza:hover {
+    figure img {
+        transform: scale(1.1);
     }
 }

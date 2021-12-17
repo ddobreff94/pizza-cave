@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useCallback } from "react";
 export const NotificationContext = createContext();
 
 export const types = {
-    error: 'danger',
+    error: 'error',
     warn: 'warning',
     info: 'info',
     success: 'success',

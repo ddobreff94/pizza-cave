@@ -1,8 +1,11 @@
 @import '../../styles/load.scss';
 
 .header {
+    position: relative;
     padding: 20px 0;
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    z-index: 2;
+    // background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    background: linear-gradient(177deg, rgba(246,245,251,0.6502976190476191) 0%, rgba(250,229,229,1) 0%, rgba(197,204,205,1) 100%);
 
     .header__inner {
         display: flex;
@@ -13,6 +16,34 @@
     .header__nav ul {
         display: flex;
         margin: 0 -20px;
+        color: #2F4F4F;
+        font-weight: 700;
+    }
+
+    .header__nav ul a {
+        position: relative;
+        transition: color .3s, transform .3s;
+        display: inline-block;
+    }
+
+    .header__nav ul a:after {
+        content: '';
+        width: 0;
+        transition: width .3s;
+        background-color: #2F4F4F;
+        height: 3px;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+
+    .header__nav ul a:hover {
+        color: #696969;
+        transform: scale(1.1);
+    }
+
+    .header__nav ul a:hover:after {
+        width: 100%;
     }
 
     .header__nav ul li {
@@ -21,6 +52,11 @@
 
     .header__logo {
         max-width: 50px;
+        transition: transform .7s;
+    }
+
+    .header__logo:hover {
+        transform: rotate(180deg);
     }
 
     .header__logo img {

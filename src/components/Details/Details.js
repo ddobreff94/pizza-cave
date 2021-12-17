@@ -7,6 +7,8 @@ import usePizzaState from "../../hooks/usePizzaState.js";
 import { useNotificationContext, types } from '../../contexts/NotificationContext';
 import * as likeService from '../../services/likeService';
 
+import './Details.scss'
+
 const Details = () => {
     const { user } = useAuthContext();
     const { pizzaId } = useParams();
@@ -45,7 +47,7 @@ const Details = () => {
     );
 
     const likeButton = (
-        <button className="section__like" onClick={likeButtonClickHandler}>
+        <button className="section__like btn btn--blue" onClick={likeButtonClickHandler}>
             Like
         </button>
     );
@@ -72,7 +74,9 @@ const Details = () => {
                                 {pizza.ingredients?.map(x => <li key={x}>{x}</li>)}
                             </ul>
                         </div>
+                    </div>
 
+                    <div className="section__actions">
                         <div className="section__likes">
                             {likeButton}
 
@@ -80,9 +84,7 @@ const Details = () => {
                                 Likes: {pizza.likes?.length || 0}
                             </p>
                         </div>
-                    </div>
 
-                    <div className="section__actions">
                         { user._id && (user._id === pizza._ownerId)
                             ? editButton
                             : ''
