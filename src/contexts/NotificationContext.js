@@ -7,6 +7,7 @@ export const types = {
     warn: 'warning',
     info: 'info',
     success: 'success',
+    like: 'like'
 };
 
 const initialNotificationState = { show: false, message: '', type: types.error };

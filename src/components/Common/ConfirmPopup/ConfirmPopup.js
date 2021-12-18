@@ -10,16 +10,16 @@ const ConfirmPopup = ({
                 <h4>
                     Do you really wish to delete this item?
                 </h4>
-            </div>
 
-            <div className="popup__actions">
-                <button onClick={deleteHandler}>
-                    Delete
-                </button>
+                <div className="popup__actions">
+                    <button className='btn btn--red' onClick={deleteHandler}>
+                        Delete
+                    </button>
 
-                <button onClick={deleteClickHandler}>
-                    Cancel
-                </button>
+                    <button className='btn btn--blue' onClick={deleteClickHandler}>
+                        Cancel
+                    </button>
+                </div>
             </div>
         </div>
     );

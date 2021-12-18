@@ -4,11 +4,6 @@ const baseUrl = "http://localhost:3030/";
 
 export const getAllPizzas = () => request.get(`${baseUrl}data/pizzas`);
 
-// export function getAllPizzas() {
-//     return fetch(`${baseUrl}data/pizzas`)
-//         .then(res => res.json())
-// };
-
 export const getMyPizzas = (ownerId) => {
     let pizzaQuery = encodeURIComponent(`_ownerId="${ownerId}"`);
 
@@ -46,6 +41,13 @@ export const destroy = (pizzaId, token) => {
     }).then(res => res.json());
 }
 
-// export const like = (pizzaId, userId) => {
-
-// };
+export const like = (pizzaId, pizza, token) => {
+    return fetch(`${baseUrl}data/pizzas/${pizzaId}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(pizza)
+    }).then(res => res.json());
+};

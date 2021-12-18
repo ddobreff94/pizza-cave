@@ -2,9 +2,13 @@ import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../../services/authService';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
+
+import './Register.scss';
 
 const Register = () => {
     const { login } = useAuthContext();
+    const { addNotification } = useNotificationContext();
     const navigate = useNavigate();
 
     const registerSubmitHandler = (event) => {
@@ -21,6 +25,7 @@ const Register = () => {
             .then(authData => {
                 login(authData);
                 navigate('/');
+                addNotification('You successfully created an account!', types.success);
             })
     }
 
@@ -28,6 +33,10 @@ const Register = () => {
         <section className="section-register">
             <div className="shell">
                 <div className="section__inner">
+                    <h2>
+                        Create a new account
+                    </h2>
+
                     <form id="registerForm" onSubmit={registerSubmitHandler} method="POST">
                         <div className="form__body">
                             <div className="form__row">
@@ -49,20 +58,10 @@ const Register = () => {
                                     <input type="password" name="password" id="formPassword" className="field" />
                                 </div>
                             </div>
-
-                            <div className="form__row">
-                                <label htmlFor="formPasswordRepeat`" className="form__label">
-                                    Repeat password
-                                </label>
-
-                                <div className="form__controls">
-                                    <input type="password" name="passwordRepeat" id="formPasswordRepeat`" className="field" />
-                                </div>
-                            </div>
                         </div>
 
-                        <div className="form__action">
-                            <button>
+                        <div className="form__actions">
+                            <button className='btn btn--blue'>
                                 Register
                             </button>
                         </div>

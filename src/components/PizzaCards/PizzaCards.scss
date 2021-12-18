@@ -64,6 +64,14 @@
     .card__actions {
         text-align: center;
     }
+
+    .card__actions a {
+        display: inline-flex;
+    }
+
+    .card__actions a + a {
+        margin-top: 20px;
+    }
 }
 
 .card-pizza:hover {

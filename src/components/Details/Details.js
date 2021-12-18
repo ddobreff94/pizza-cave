@@ -36,12 +36,12 @@ const Details = () => {
             .then(() => {
                 setPizza(state => ({...state, likes: [...state.likes, user._id]}));
 
-                addNotification('Successfuly liked a cat :)', types.success);
+                addNotification('You successfully liked the pizza! :)', types.like);
             });
     };
 
     const editButton = (
-        <Link to={`/edit/${pizza._id}`} className="section__edit">
+        <Link to={`/edit/${pizza._id}`} className="section__edit btn btn--yellow">
             Edit
         </Link> 
     );

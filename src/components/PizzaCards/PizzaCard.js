@@ -4,12 +4,14 @@ import { useState } from "react";
 import * as pizzaService from '../../services/pizzaService';
 import { useAuthContext } from "../../contexts/AuthContext";
 import ConfirmPopup from '../Common/ConfirmPopup/ConfirmPopup'
+import { useNotificationContext, types } from "../../contexts/NotificationContext";
 
 const PizzaCard = ({
     pizza
 }) => {
     const { user } = useAuthContext();
     const navigate = useNavigate();
+    const { addNotification } = useNotificationContext(); 
     const [showDeletePopup, setShowDeletePopup] = useState(false);
 
     const deleteHandler = (event) => {
@@ -19,6 +21,7 @@ const PizzaCard = ({
             .then(() => {
                 navigate('/');
                 navigate('/menu');
+                addNotification('You successfully deleted this pizza!', types.error)
             });
     }
 
@@ -33,7 +36,7 @@ const PizzaCard = ({
     }
 
     const deleteButton = (
-        <a href="#" className="card__delete" onClick={deleteClickHandler}>
+        <a href="#" className="card__delete btn btn--red" onClick={deleteClickHandler}>
             Delete
         </a>
     );
