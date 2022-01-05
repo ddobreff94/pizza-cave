@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
 import * as pizzaService from '../../services/pizzaService.js'
 import PizzaList from '../PizzaList/PizzaList';
+import { isAuth } from '../hoc/isAuth';
 
 import './MyPizzas.scss'
 
@@ -37,4 +38,6 @@ const MyPizzas = () => {
     );
 };
 
-export default MyPizzas;
+const EnhancedMyPizzas = isAuth(MyPizzas);
+
+export default EnhancedMyPizzas;
