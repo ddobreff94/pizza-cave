@@ -1344,7 +1344,7 @@
                     "Ham",
                     "Mushroom"
                 ],
-                "imageUrl": "https://pinocchio.paradisealacarte.com/wp-content/uploads/sites/8/2019/04/caprichiosa-pizza-min-1.jpeg",
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg",
                 "description": "Pizza capricciosa is a style of pizza in Italian cuisine prepared with mozzarella cheese, Italian baked ham, mushroom, artichoke and tomato.",
                 "_createdOn": 1617194128613,
                 "likes": []
